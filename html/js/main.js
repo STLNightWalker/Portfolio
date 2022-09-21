@@ -115,7 +115,6 @@ $(document).ready(function() {
     });
 
 
-
     /*======== Skills Progress Animation ========*/
     if($('.skills').length > 0) {
 
