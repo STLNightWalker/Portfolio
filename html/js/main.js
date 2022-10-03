@@ -114,6 +114,52 @@ $(document).ready(function() {
 
     });
 
+    /*========Clients OwlCarousel Setup========*/
+    $(".clients .owl-carousel").owlCarousel({
+        loop: true,
+        margin: 30,
+        autoplay: true,
+        smartSpeed: 500,
+        responsiveClass: true,
+        autoplayHoverPause: true,
+        dots: false,
+        responsive: {
+            0: {
+                items: 2,
+            },
+            500: {
+                items: 3,
+            },
+            700: {
+                items: 4,
+            },
+            1000: {
+                items: 6,
+            },
+        },
+    });
+
+    /*========Testimonials OwlCarousel Setup========*/
+    $(".testimonials .owl-carousel").owlCarousel({
+        loop: true,
+        margin: 30,
+        autoplay: true,
+        smartSpeed: 500,
+        responsiveClass: true,
+        dots: false,
+        autoplayHoverPause: true,
+        responsive: {
+            0: {
+                items: 1,
+            },
+            800: {
+                items: 1,
+            },
+            1000: {
+                items: 2,
+            },
+        },
+    });
 
     /*======== Skills Progress Animation ========*/
     if($('.skills').length > 0) {
@@ -131,7 +177,7 @@ $(document).ready(function() {
         }
 
         //When Resume Link is clicked
-        $('a[href="downlaodfiles/stortzresume.pdf"]').on('click', function(){
+        $('a[href="#resume"]').on('click', function(){
             animateProgress();
         });
 
@@ -238,6 +284,31 @@ function ajaxPortfolioSetup($ajaxLink, $ajaxContainer) {
 
 }
 
+
+/********** Function Map Initialization **********/
+function initMap() {
+    var latitude = $("#map").data('latitude'),
+        longitude = $("#map").data('longitude'),
+        zoom = $("#map").data('zoom'),
+        cordinates = new google.maps.LatLng(latitude, longitude);
+
+    var styles = [{"stylers":[{"saturation":-100},{"gamma":0.8},{"lightness":4},{"visibility":"on"}]},{"featureType":"landscape.natural","stylers":[{"visibility":"on"},{"color":"#5dff00"},{"gamma":4.97},{"lightness":-5},{"saturation":100}]}];
+        var mapOptions = {
+        zoom: zoom,
+        center: cordinates,
+        mapTypeControl: false,
+        disableDefaultUI: true,
+        zoomControl: true,
+        scrollwheel: false,
+        styles: styles
+    };
+    var map = new google.maps.Map(document.getElementById('map'), mapOptions);
+    var marker = new google.maps.Marker({
+        position: cordinates,
+        map: map,
+        title: "We are here!"
+    });
+}
 
 /********** Function Contact Form Setup **********/
 function contactFormSetup() {
